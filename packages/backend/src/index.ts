@@ -3,6 +3,10 @@ import { RequestSpec } from "caido:utils";
 
 export function init(sdk: SDK) {
   sdk.events.onInterceptResponse(async (sdk, request, response) => {
+    if (!sdk.requests.inScope(request)) {
+      return;
+    }
+
     const requestSpec = new RequestSpec("http://localhost");
     requestSpec.setPath("/caido-ingest");
     requestSpec.setPort(3333);
