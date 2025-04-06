@@ -2,9 +2,9 @@
 
 Caido plugin to ingest requests to [jxscout](https://github.com/francisconeves97/jxscout)
 
-## Downloading from releases
+# Installing
 
-You can download the pre-compiled plugin from the [releases page](https://github.com/francisconeves97/jxscout-caido/releases).
+You can download the pre-compiled plugin zip file from the [releases page](https://github.com/francisconeves97/jxscout-caido/releases). You can then install the plugin through Caido on the Plugins page.
 
 ## Building locally
 

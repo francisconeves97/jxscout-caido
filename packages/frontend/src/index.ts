@@ -1,46 +1,50 @@
-import type { Caido } from "@caido/sdk-frontend";
+import { Classic } from "@caido/primevue";
+import PrimeVue from "primevue/config";
+import { createApp } from "vue";
 
-import type { PluginStorage } from "./types";
+import App from "./views/App.vue";
 
-import "./styles/style.css";
+import "./styles/index.css";
 
-type CaidoSDK = Caido;
+import { SDKPlugin } from "./plugins/sdk";
+import type { FrontendSDK } from "./types";
 
-const Page = "/jx" as const;
 
-const getJXScoutPort = (sdk: CaidoSDK) => {
-  const storage = sdk.storage.get() as PluginStorage | undefined;
 
-  if (storage) {
-    return storage.jxscoutPort;
-  }
+// This is the entry point for the frontend plugin
+export const init = (sdk: FrontendSDK) => {
+  const app = createApp(App);
 
-  return "3333";
-};
-
-const addPage = (sdk: CaidoSDK) => {
-  const jxscoutPort = getJXScoutPort(sdk);
-
-  const body = document.createElement("div");
-  body.className = "jx";
-  body.innerHTML = `
-    <div class="jxscout-config">
-      <span>Port:</span>
-      <input name="jxscout-port" type="text">${jxscoutPort}</span>
-    </div>
-  `;
-
-  sdk.navigation.addPage(Page, {
-    body,
+  // Load the PrimeVue component library
+  app.use(PrimeVue, {
+    unstyled: true,
+    pt: Classic,
   });
-};
 
-export const init = (sdk: CaidoSDK) => {
-  // Register page
-  addPage(sdk);
+  // Provide the FrontendSDK
+  app.use(SDKPlugin, sdk);
 
-  // Register sidebar
-  sdk.sidebar.registerItem("JX", Page, {
-    icon: "fas fa-rocket",
+  // Create the root element for the app
+  const root = document.createElement("div");
+  Object.assign(root.style, {
+    height: "100%",
+    width: "100%",
   });
+
+  // Set the ID of the root element
+  // Replace this with the value of the prefixWrap plugin in caido.config.ts 
+  // This is necessary to prevent styling conflicts between plugins
+  root.id = `plugin--frontend-vue`;
+
+  // Mount the app to the root element
+  app.mount(root);
+
+  // Add the page to the navigation
+  // Make sure to use a unique name for the page
+  sdk.navigation.addPage("/jxscout", {
+    body: root,
+  });
+
+  // Add a sidebar item
+  sdk.sidebar.registerItem("JXScout", "/jxscout");
 };
