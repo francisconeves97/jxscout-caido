@@ -7,12 +7,12 @@ import tailwindCaido from "@caido/tailwindcss";
 import path from "path";
 import prefixwrap from "postcss-prefixwrap";
 
-const id = "frontend-vue";
+const id = "jxscout-caido";
 export default defineConfig({
   id,
   name: "jxscout",
   description: "Plugin to ingest requests from Caido into jxscout (https://github.com/francisconeves97/jxscout)",
-  version: "0.3.0",
+  version: "0.4.0",
   author: {
     name: "Francisco Neves",
     email: "dev@caido.io",
