@@ -1,5 +1,6 @@
-import type { DefineAPI, SDK } from "caido:plugin";
+import type { SDK } from "caido:plugin";
 import { RequestSpec } from "caido:utils";
+import type { DefinePluginPackageSpec } from "@caido/sdk-shared";
 import { readFile, writeFile } from "fs/promises";
 import * as path from "path";
 import { Response, Settings } from "./types";
@@ -61,12 +62,16 @@ const getSettings = async (sdk: SDK): Promise<Response<Settings>> => {
   }
 };
 
-export type API = DefineAPI<{
-  saveSettings: typeof saveSettings;
-  getSettings: typeof getSettings;
+export type Spec = DefinePluginPackageSpec<{
+  manifestId: "jxscout-caido";
+  api: {
+    saveSettings: (settings: Settings) => Promise<Response<Settings>>;
+    getSettings: () => Promise<Response<Settings>>;
+  };
+  events: {};
 }>;
 
-export function init(sdk: SDK<API>) {
+export function init(sdk: SDK<Spec>) {
   sdk.api.register("saveSettings", saveSettings);
   sdk.api.register("getSettings", getSettings);
 

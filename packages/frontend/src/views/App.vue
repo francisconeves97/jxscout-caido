@@ -27,7 +27,7 @@ const loadSettings = async () => {
     const settings = response.data;
 
     host.value = settings.host;
-    port.value = settings.port;
+    port.value = String(settings.port);
     filterInScope.value = settings.filterInScope;
   } catch (error) {
     sdk.window.showToast(`Failed to load settings: ${error}`, { variant: "error" });
