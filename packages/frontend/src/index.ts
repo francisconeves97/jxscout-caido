@@ -31,10 +31,9 @@ export const init = (sdk: FrontendSDK) => {
     width: "100%",
   });
 
-  // Set the ID of the root element
-  // Replace this with the value of the prefixWrap plugin in caido.config.ts 
-  // This is necessary to prevent styling conflicts between plugins
-  root.id = `plugin--frontend-vue`;
+  // ID must match the postcss-prefixwrap selector in caido.config.ts so the
+  // plugin's compiled CSS layer actually targets this subtree.
+  root.id = `plugin--jxscout-caido`;
 
   // Mount the app to the root element
   app.mount(root);

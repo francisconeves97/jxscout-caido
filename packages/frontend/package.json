@@ -6,15 +6,15 @@
     "typecheck": "vue-tsc --noEmit"
   },
   "dependencies": {
-    "@caido/primevue": "0.1.2",
+    "@caido/primevue": "0.3.3",
     "primevue": "4.1.0",
-    "vue": "3.4.37"
+    "vue": "3.5.34"
   },
   "devDependencies": {
-    "@caido/sdk-backend": "^0.51.1",
-    "@caido/sdk-frontend": "^0.51.1",
-    "@codemirror/view": "6.28.1",
+    "@caido/sdk-backend": "0.56.0",
+    "@caido/sdk-frontend": "0.56.0",
+    "@codemirror/view": "6.42.1",
     "backend": "workspace:*",
-    "vue-tsc": "2.0.29"
+    "vue-tsc": "3.2.8"
   }
 }
