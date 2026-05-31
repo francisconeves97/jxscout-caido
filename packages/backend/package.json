@@ -7,6 +7,7 @@
     "typecheck": "tsc --noEmit"
   },
   "devDependencies": {
-    "@caido/sdk-backend": "^0.51.1"
+    "@caido/sdk-backend": "0.56.0",
+    "@caido/sdk-shared": "0.2.2"
   }
 }

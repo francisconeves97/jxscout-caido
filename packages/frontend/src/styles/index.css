@@ -3,3 +3,18 @@
 @import "tailwindcss/base";
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
+
+/* Caido's host shell sets `user-select: none` globally. Re-enable it inside
+ * the plugin; selectors here are bare because postcss-prefixwrap will scope
+ * them to `#plugin--jxscout-caido` at build time — pre-prefixing produces
+ * `#plugin--jxscout-caido #plugin--jxscout-caido *`, which matches nothing. */
+*,
+:root {
+  user-select: text;
+  -webkit-user-select: text;
+}
+.select-none,
+.select-none * {
+  user-select: none;
+  -webkit-user-select: none;
+}

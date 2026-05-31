@@ -1,4 +1,4 @@
 import { Caido } from "@caido/sdk-frontend";
-import { API } from "backend";
+import { Spec } from "backend";
 
-export type FrontendSDK = Caido<API, {}>;
+export type FrontendSDK = Caido<Spec["api"], Spec["events"]>;
