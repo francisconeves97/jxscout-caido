@@ -13,7 +13,7 @@ export default defineConfig({
   name: "jxscout",
   description:
     "Plugin to ingest requests from Caido into jxscout (https://github.com/francisconeves97/jxscout)",
-  version: "0.5.1",
+  version: "0.5.2",
   author: {
     name: "Francisco Neves",
     email: "dev@caido.io",
